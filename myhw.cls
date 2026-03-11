@@ -21,6 +21,11 @@
 \setlength{\hiddenlen}{0.1\textwidth}
 \newcommand{\widebar}[1]{\par\hrule height #1\relax\par}
 
+
+% ========================================
+% TITLE PAGE
+% ========================================
+
 % TITLE PAGE ARGS
 \newcommand{\@school}{}
 \newcommand{\school}[1]{\renewcommand{\@school}{#1}}
@@ -40,9 +45,7 @@
 \newcommand{\@duedate}{}
 \newcommand{\duedate}[1]{\renewcommand{\@duedate}{#1}}
 
-% ========================================
-% TITLE PAGE
-% ========================================
+% CUSTOM MAKETITLE
 \renewcommand{\maketitle}{%
     \thispagestyle{empty}
 
@@ -94,6 +97,7 @@
     \clearpage 
     \setcounter{page}{1}
 }
+
 
 % ========================================
 % EXERCISE ENV
