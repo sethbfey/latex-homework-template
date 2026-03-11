@@ -2,12 +2,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{myhw}
 
-% BASE CLASS ARGS
+% --- BASE CLASS ARGS ---
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass[10pt, letterpaper]{article}
 
-% REQUIRED STRUCTURAL PACKAGES
+% --- REQUIRED STRUCTURAL PACKAGES ---
 \RequirePackage[T1]{fontenc}
 \RequirePackage{babel}
 \RequirePackage[hmargin=1.50in, tmargin=0.75in]{geometry}
@@ -15,7 +15,7 @@
 \RequirePackage{amsthm}   % for \qed symbol
 \RequirePackage{tabularx} % for bottom section X column
 
-% GLOBAL SETTINGS
+% --- GLOBAL SETTINGS ---
 \setlength{\parindent}{0pt}
 \newlength{\hiddenlen}
 \setlength{\hiddenlen}{0.1\textwidth}
@@ -26,7 +26,7 @@
 % TITLE PAGE
 % ========================================
 
-% TITLE PAGE ARGS
+% --- TITLE PAGE ARGS ---
 \newcommand{\@school}{}
 \newcommand{\school}[1]{\renewcommand{\@school}{#1}}
 
@@ -45,13 +45,13 @@
 \newcommand{\@duedate}{}
 \newcommand{\duedate}[1]{\renewcommand{\@duedate}{#1}}
 
-% CUSTOM MAKETITLE
+% --- CUSTOM MAKETITLE ---
 \renewcommand{\maketitle}{%
     \thispagestyle{empty}
 
     \vspace*{\fill}
 
-    {% TOP SECTION
+    {% --- TOP SECTION ---
         \centering\scshape\large
         \@school, \@semester
 
@@ -63,7 +63,7 @@
 
     \vspace{0.04\textheight}
         
-    {% MIDDLE SECTION
+    {% --- MIDDLE SECTION ---
         \widebar{1pt}
 
         \vspace{0.03\textheight}
@@ -83,7 +83,7 @@
 
     \vspace{0.04\textheight}
 
-    {% BOTTOM
+    {% --- BOTTOM ---
         \scshape\large
         \begin{tabularx}{\textwidth}{X l @{\hspace{\hiddenlen}} r X}
             & Instructor: & \@instructor & \\[0.01\textheight]
