@@ -20,6 +20,7 @@
 \newlength{\hiddenlen}
 \setlength{\hiddenlen}{0.1\textwidth}
 \newcommand{\widebar}[1]{\par\hrule height #1\relax\par}
+\newcommand{\bsl}{\vspace{\baselineskip}}
 
 
 % ========================================
