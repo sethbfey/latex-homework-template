@@ -1,13 +1,15 @@
 \documentclass{myhw}
+
+% --- LOAD STYLES ---
 \usepackage{mymath}
 \usepackage{mycs}
 \usepackage{mytikz}
 
-% --- Title Page Info ---
+% --- TITLE PAGE INFO ---
 \school{University of South Dakota}
 \semester{Spring 2026}
-\course{MATH 542 - Course Name}
-\title{Assignment Title}
+\course{MATH 100 - Course Name}
+\title{Title of this Assignment}
 \student{Student Name}
 \instructor{Instructor Name}
 \duedate{\today}
@@ -15,14 +17,16 @@
 \begin{document}
 \maketitle
 
+% --- EXERCISE ---
 \begin{exercise}{1}
     Let $A \subset [0,1]$ be the union of open intervals $(a_i,b_i)$ such that each rational number in $(0,1)$ is contained in some interval $(a_i,b_i)$. Show that $\operatorname{Bd} A = [0,1] \smallsetminus A$. Give an example how to construct such intervals such that $\sum_{i=1}^{\infty} (b_i - a_i) < 1$. Explain why in this case $A$, even though it is open, it is not Jordan Measurable, so $\chi_A$ is not integrable.
 \end{exercise}
 
+% --- SOLUTION ---
 \begin{solution}
-    The set $A$ contains all rationals in $(0,1)$, which are dense in $[0,1]$. Thus every neighborhood of any point in $[0,1]$ intersects $A$ (indeed any neighborhood contains a rational $q\in(0,1)$ and by assumption that rational lies in some $(a_i,b_i)$), so $\overline{A} = [0,1]$. Since $A$ is a union of open intervals, $\mathring{A} = A$. Therefore,
+    The set $A$ contains all rationals in $(0,1)$, which are dense in $[0,1]$. Thus every neighborhood of any point in $[0,1]$ intersects $A$ (indeed any neighborhood contains a rational $q\in(0,1)$ and by assumption that rational lies in some $(a_i,b_i)$), so $\overline{A} = [0,1]$. Since $A$ is a union of open intervals, $\operatorname{Int}A = A$. Therefore,
     
-    \[ \partial A = \overline{A} \smallsetminus \mathring{A} = [0,1] \smallsetminus A. \]
+    \[ \partial A = \overline{A} \smallsetminus \operatorname{Int}A = [0,1] \smallsetminus A. \]
     
     For the example, enumerate the rationals in $(0,1)$ as $q_1,q_2,q_3,\ldots$. For each $i$ take an open interval centered at $q_i$ of length $2^{-(i+1)}$, for instance
 
@@ -33,66 +37,6 @@
     \[ b_i-a_i=\frac{1}{2^{i+1}}, \qquad \sum_{i=1}^\infty (b_i-a_i)=\sum_{i=1}^\infty \frac{1}{2^{i+1}}=\frac12<1, \]
 
     and by construction every rational in $(0,1)$ lies in some $(a_i,b_i)$. Finally, to see $A$ is not Jordan measurable: since $A=\bigcup_i (a_i,b_i)$ and the total length of these intervals is $\sum_i (b_i-a_i)<1$, the complement $[0,1]\setminus A=\partial A$ has length at least $1-\sum_i(b_i-a_i)>0$. In particular $\partial A$ does not have measure zero (Jordan content zero), so $A$ is not Jordan measurable. By the usual criterion (a bounded set is Jordan measurable iff its characteristic function is Riemann integrable) the characteristic function $\chi_A$ is therefore not integrable on $[0,1]$. \qed
-\end{solution}
-
-\begin{exercise}{2}
-    $X(p) = \sum_{i=1}^n X^i(p)(e_i)(p)$ is a vector field in $\mathbb{R}^n$, one can define a linear transformation of the space of all functions $f: \mathbb{R}^n \to \mathbb{R}$: 
-    
-    \[ X(f)(p) = (df)(p)(X(p)) \]
-    
-    Show that 
-    
-    \[ X(f)(p) = \sum_{i=1}^n \frac{\partial f}{\partial x^i}(p)X^i(p). \] 
-    
-    Use this to compute the so-called Lie bracket of two vector fields $X,Y$, which is a new vector field given by 
-    
-    \[ \big[X,Y\big](f) = X(Y(f)) - Y(X(f)). \]
-    
-    Hint: the answer should be
-
-    \[ \big[X,Y\big](f) = \sum_{i=1}^n \left( \sum_{j=1}^n \left( X^j \frac{\partial Y^i}{\partial x^j} - Y^j \frac{\partial X^i}{\partial x^j} \right) \right) \frac{\partial f}{\partial x^i}. \]
-\end{exercise}
-
-\begin{solution}
-    By Theorem 4-7, we can write the differential of $f$ in terms of the standard basis $dx^i$ as
-
-    \[ df = \sum_{i=1}^n \frac{\partial f}{\partial x^i} dx^i. \]
-
-    We apply this 1-form to the vector $X = \sum_{j=1}^n X^j e_j$. Since $dx^i(e_j) = \delta^i_j$, we get
-
-    \[ X(f) = df(X) = \sum_{i=1}^n \frac{\partial f}{\partial x^i} X^i. \]
-
-    Now we use this formula to compute the Lie bracket. First, we calculate the term $X(Y(f))$. We know that $Y(f)$ is a function given by $\sum_{k=1}^n Y^k \frac{\partial f}{\partial x^k}$. To find $X(Y(f))$, we apply the vector field $X$ to this new function. Using the formula we just derived, we have
-
-    \[ X(Y(f)) = \sum_{j=1}^n X^j \frac{\partial}{\partial x^j} \left( \sum_{k=1}^n Y^k \frac{\partial f}{\partial x^k} \right). \]
-
-    We use the product rule on the term inside the parenthesis
-
-    \[ X(Y(f)) = \sum_{j=1}^n X^j \sum_{k=1}^n \left( \frac{\partial Y^k}{\partial x^j} \frac{\partial f}{\partial x^k} + Y^k \frac{\partial^2 f}{\partial x^j \partial x^k} \right). \]
-
-    We can distribute the summation to separate the first-derivative terms and the second-derivative terms
-
-    \[ X(Y(f)) = \sum_{j=1}^n \sum_{k=1}^n X^j \frac{\partial Y^k}{\partial x^j} \frac{\partial f}{\partial x^k} + \sum_{j=1}^n \sum_{k=1}^n X^j Y^k \frac{\partial^2 f}{\partial x^j \partial x^k}. \]
-
-    Similarly, the expression for $Y(X(f))$ is the same, just with the roles of $X$ and $Y$ swapped, hence
-
-    \[ Y(X(f)) = \sum_{j=1}^n \sum_{k=1}^n Y^j \frac{\partial X^k}{\partial x^j} \frac{\partial f}{\partial x^k} + \sum_{j=1}^n \sum_{k=1}^n Y^j X^k \frac{\partial^2 f}{\partial x^j \partial x^k}. \]
-
-    Now, we calculate the Lie bracket by subtracting the second expression from the first.
-
-    \[ [X,Y](f) = X(Y(f)) - Y(X(f)). \]
-
-    Let's look at the second-derivative terms in this subtraction.
-
-    \[ \sum_{j=1}^n \sum_{k=1}^n X^j Y^k \frac{\partial^2 f}{\partial x^j \partial x^k} - \sum_{j=1}^n \sum_{k=1}^n Y^j X^k \frac{\partial^2 f}{\partial x^j \partial x^k}. \]
-
-    Since $f$ is smooth, the mixed partial derivatives are equal, so $\frac{\partial^2 f}{\partial x^j \partial x^k} = \frac{\partial^2 f}{\partial x^k \partial x^j}$. We can rename the indices in the second sum by swapping $j$ and $k$, which shows that these two double sums are identical and cancel each other out. This leaves us with only the first-derivative terms
-
-    \[ [X,Y](f) = \sum_{j=1}^n \sum_{k=1}^n X^j \frac{\partial Y^k}{\partial x^j} \frac{\partial f}{\partial x^k} - \sum_{j=1}^n \sum_{k=1}^n Y^j \frac{\partial X^k}{\partial x^j} \frac{\partial f}{\partial x^k}. \]
-
-    Finally, we group the terms by the partial derivative of $f$. We replace the index $k$ with $i$ to match the form in the hint
-
-    \[ [X,Y](f) = \sum_{i=1}^n \left( \sum_{j=1}^n \left( X^j \frac{\partial Y^i}{\partial x^j} - Y^j \frac{\partial X^i}{\partial x^j} \right) \right) \frac{\partial f}{\partial x^i}. \tag*{\qed} \]
 \end{solution}
 
 \end{document}
