@@ -50,7 +50,7 @@
 \renewcommand{\maketitle}{%
     \thispagestyle{empty}
 
-    \vspace*{\fill}
+    \vspace*{0.15\textheight}
 
     {% --- TOP SECTION ---
         \centering\scshape\large
@@ -94,7 +94,6 @@
         \par
     }
     
-    \vspace*{\fill}
     \clearpage 
     \setcounter{page}{1}
 }
