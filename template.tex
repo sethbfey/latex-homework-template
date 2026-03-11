@@ -1,6 +1,5 @@
 \documentclass{myhw}
-
-\usepackage{mathtools, amsfonts, amssymb}
+\usepackage{mymath}
 
 % --- Title Page Info ---
 \school{University of South Dakota}
@@ -25,16 +24,11 @@
     
     For the example, enumerate the rationals in $(0,1)$ as $q_1,q_2,q_3,\ldots$. For each $i$ take an open interval centered at $q_i$ of length $2^{-(i+1)}$, for instance
 
-    \[
-        (a_i,b_i)=\left(q_i-\frac{1}{2^{i+2}},\,q_i+\frac{1}{2^{i+2}}\right),
-    \]
+    \[ (a_i,b_i)=\left(q_i-\frac{1}{2^{i+2}},\,q_i+\frac{1}{2^{i+2}}\right), \]
 
     and if necessary replace $(a_i,b_i)$ by $(a_i,b_i)\cap(0,1)$ to keep it inside $(0,1)$. Then
 
-    \[
-        b_i-a_i=\frac{1}{2^{i+1}},\qquad
-        \sum_{i=1}^\infty (b_i-a_i)=\sum_{i=1}^\infty \frac{1}{2^{i+1}}=\frac12<1,
-    \]
+    \[ b_i-a_i=\frac{1}{2^{i+1}}, \qquad \sum_{i=1}^\infty (b_i-a_i)=\sum_{i=1}^\infty \frac{1}{2^{i+1}}=\frac12<1, \]
 
     and by construction every rational in $(0,1)$ lies in some $(a_i,b_i)$. Finally, to see $A$ is not Jordan measurable: since $A=\bigcup_i (a_i,b_i)$ and the total length of these intervals is $\sum_i (b_i-a_i)<1$, the complement $[0,1]\setminus A=\partial A$ has length at least $1-\sum_i(b_i-a_i)>0$. In particular $\partial A$ does not have measure zero (Jordan content zero), so $A$ is not Jordan measurable. By the usual criterion (a bounded set is Jordan measurable iff its characteristic function is Riemann integrable) the characteristic function $\chi_A$ is therefore not integrable on $[0,1]$. \qed
 \end{solution}
