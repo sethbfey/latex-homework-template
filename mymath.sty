@@ -5,6 +5,7 @@
 % --- CORE MATH PACKAGES ---
 \RequirePackage{mathtools}      % loads amsmath internally
 \RequirePackage{amssymb}        % standard math symbols
+\RequirePackage{amsthm}         % theorem environments
 \RequirePackage{amsfonts}       % standard math fonts
 \RequirePackage[mathcal]{eucal} % euler calligraphic font 
 
@@ -30,5 +31,9 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+
+% --- THEOREM ENVIRONMENTS ---
+\theoremstlye{definition}
+\newtheorem{definition}{Definition}[section]
 
 \endinput
